@@ -26,7 +26,7 @@ import dear.diary.diarypage.service.DiaryPageService;
 @Controller
 @RequestMapping("/diary")
 public class DiaryController {
-	
+	//test
 	@Autowired
 	DiaryPageService diarypageService;
 	
