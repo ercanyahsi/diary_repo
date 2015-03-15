@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="dear.diary.user.model">
+    <class name="User" table="TUSERS">
+        <id name="id" column="USER_ID">
+            <generator class="native"/>
+        </id>
+        <property name="username" column="USERNAME" />
+        <property name="password" column="PASSWORD" />
+        <property name="email" column="EMAIL" />
+        <set name="diaries" table="DIARIES" cascade="all" inverse="true" lazy="false" fetch="select">
+        	<key column="USER_ID" not-null="true"></key>
+        	<one-to-many class="dear.diary.diary.model.Diary"/>
+        </set>
+    </class> 
+</hibernate-mapping>
