@@ -6,7 +6,7 @@
 <header>
  <div id="header_section">	  
 <div id="welcome">
-     <h2><img alt="pencil" src="/dear/resources/images/pencil.png" width="60px" height="60px" align="absmiddle"><spring:message code="lbl.title"  /></h2>
+     <h2><img alt="pencil" src="/DearDiary/resources/images/pencil.png" width="60px" height="60px" align="absmiddle"><spring:message code="lbl.title"  /></h2>
    </div><!--close welcome-->			  	
     <nav>
          <ul id="nav">

@@ -16,7 +16,7 @@
 	<tr>
 	<td align="right"><label for="password"><spring:message code="lbl.password"  />:</label></td>
 	<td>
-		<sf:input path="password" size="15" maxlength="15" id="password"/>
+		<sf:password path="password" size="15" maxlength="15" id="password"/>
 		<sf:errors path="password"></sf:errors>
 	</td>
 	</tr>

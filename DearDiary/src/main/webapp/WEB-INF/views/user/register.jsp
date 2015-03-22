@@ -16,14 +16,14 @@
 	<tr>
 	<td align="right"><label for="email"><spring:message code="lbl.email"  />:</label></td>
 	<td>
-		<sf:input path="email" size="15" maxlength="15" id="email"/>
+		<sf:input path="email" size="15" maxlength="25" id="email"/>
 		<sf:errors path="email"></sf:errors>
 	</td>
 	</tr>
 	<tr>
 	<td align="right"><label for="password"><spring:message code="lbl.password"  />:</label></td>
 	<td>
-		<sf:input path="password" size="15" maxlength="15" id="password"/>
+		<sf:password path="password" size="15" maxlength="15" id="password"/>
 		<sf:errors path="password"></sf:errors>
 	</td>
 	</tr>

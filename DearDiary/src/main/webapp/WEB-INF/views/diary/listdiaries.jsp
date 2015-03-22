@@ -16,7 +16,7 @@
 			</c:otherwise>
 			</c:choose>
 
-			<fmt:formatDate value="${diaryPage.pageDate}"/> 
+			<fmt:formatDate value="${diaryPage.pageDate}"  pattern="dd/MM/yyyy" /> 
 			<br>
 			<a href='<spring:url value="/diary?write=${diaryPage.pageDate}"/>'><spring:message code="lbl.yaz" /></a>
 		</div>

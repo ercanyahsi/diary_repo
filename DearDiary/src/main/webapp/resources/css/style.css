@@ -311,3 +311,13 @@ box-shadow: 0px 0px 3px 0px #333333;
  width: 150px;
  height: 300px;
 }
+
+.notbookLookDiv{	
+ background: url(notebook.png) repeat-y;
+ font: normal 14px verdana;
+ line-height: 25px;
+ padding: 2px 10px;
+ border: solid 1px #ddd;
+ height: 200px;
+ overflow: auto;
+}
