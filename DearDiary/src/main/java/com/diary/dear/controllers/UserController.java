@@ -9,6 +9,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -37,7 +38,7 @@ public class UserController {
 	
 
 	@RequestMapping(method=RequestMethod.POST)
-	public String createUser(@Valid User user, HttpSession session, Model model, BindingResult result) throws Exception {
+	public String createUser(@ModelAttribute("user") User user, HttpSession session, Model model, BindingResult result) throws Exception {
 		
 		if (result.hasErrors())
 			return "user/register";

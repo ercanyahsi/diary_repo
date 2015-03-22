@@ -9,4 +9,6 @@ public interface DiaryPageDAO {
 	 public DiaryPage getByDate(Diary diary, Date date);
 	 public void saveDiaryPage(DiaryPage diaryPage);
 	 public void saveOrUpdateDiaryPage(DiaryPage diaryPage);
+	 public int getMaxDiaryPageId(int diaryId);
+	 public DiaryPage loadByRecordId(int diaryId, int recordId);
 }

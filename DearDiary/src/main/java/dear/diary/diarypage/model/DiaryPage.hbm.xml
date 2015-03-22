@@ -10,6 +10,6 @@
         <property name="diaryId" column="DIARY_ID"  />
         <property name="pageDate" column="PAGE_DATE" />
         <property name="contentLanguage" column="CONTENT_LANGUAGE" />
-        <property name="content" column="CONTENT" />
+        <property name="content" column="CONTENT" type="text" />
     </class> 
 </hibernate-mapping>

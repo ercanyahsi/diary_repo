@@ -1,11 +1,11 @@
 package dear.diary.diarypage.service;
 
 import java.sql.Date;
+import java.util.Random;
 
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import dear.diary.diary.model.Diary;
 import dear.diary.diarypage.dao.DiaryPageDAO;
@@ -33,5 +33,15 @@ public class DiaryPageService {
 	@Transactional
 	public void saveOrUpdateDiaryPage(DiaryPage diaryPage) {
 		diaryPageDAO.saveOrUpdateDiaryPage(diaryPage);
+	}
+	
+
+	@Transactional
+	public DiaryPage getRandomDiaryPage(int diaryId){
+		int max = diaryPageDAO.getMaxDiaryPageId(diaryId);
+		Random generator = new Random();		
+		int choosen = generator.nextInt(max)+1;
+		return diaryPageDAO.loadByRecordId(diaryId, choosen);
+		
 	}
 }

@@ -5,6 +5,7 @@ import org.hibernate.SessionFactory;
 import dear.diary.diary.dao.DiaryDAO;
 import dear.diary.diary.dao.DiaryDAOImpl;
 import dear.diary.diary.model.Diary;
+import dear.diary.diarypage.model.DiaryPage;
 
 public class DiaryService {
 
@@ -17,4 +18,5 @@ public class DiaryService {
 	public void saveDiary(Diary diary){
 		this.diaryDAO.saveDiary(diary);
 	}
+	
 }
