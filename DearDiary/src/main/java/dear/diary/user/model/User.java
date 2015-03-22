@@ -2,12 +2,15 @@ package dear.diary.user.model;
 
 import java.util.Set;
 
+import javax.validation.constraints.Min;
+
 import dear.diary.diary.model.Diary;
 
 
 public class User {    
 	private int id;
 
+	@Min(6)
 	private String username;
 
 	private String password;

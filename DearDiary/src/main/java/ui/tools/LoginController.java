@@ -10,10 +10,11 @@ import dear.diary.user.model.User;
 
 public class LoginController {
 
-	public static void setUserProfile(HttpSession session, User user) throws Exception{
+	public static UserProfile setUserProfile(HttpSession session, User user) throws Exception{
 		UserProfile up = new UserProfile();
 		BeanUtils.copyProperties(up, user);
 		session.setAttribute(IConstants.USERPROFILE_KEY, up);
+		return up;
 	}
 	
 	public static UserProfile getUserProfile(HttpSession session) {
