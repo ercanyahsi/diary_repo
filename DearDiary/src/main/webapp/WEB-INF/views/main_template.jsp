@@ -5,7 +5,8 @@
 <html>
 <head>
 <title>Home</title>
-<link rel="stylesheet" type="text/css" href="/DearDiary/resources/css/style.css" />
+<spring:url value="/resources/css/style.css" var="mainCss" />	
+<link href="${mainCss}" rel="stylesheet" />
 </head>
 <body>
  	 <tiles:insertAttribute name="top"></tiles:insertAttribute> 
