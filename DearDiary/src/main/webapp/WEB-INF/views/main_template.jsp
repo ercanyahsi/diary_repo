@@ -24,12 +24,8 @@
 </c:choose>
 					<tiles:insertAttribute name="content"></tiles:insertAttribute>	
 				</div>
- 	 		<tiles:insertAttribute name="rightside"></tiles:insertAttribute>
-		  </div><!--close content-->   
-		</div><!--close site_content-->  	
+		  </div><!--close content-->   	
      </div>
-  
-  </div>
  	 <tiles:insertAttribute name="footer"></tiles:insertAttribute> 
 
 
