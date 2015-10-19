@@ -6,7 +6,7 @@
 <%@ page session="false" %>
 
 
-<sf:form  name="input" method="post" action="diary" modelAttribute="diaryPage" cssClass="form_settings">
+<sf:form  name="input" method="post" action="/dear/diary/save" modelAttribute="diaryPage" cssClass="form_settings">
 <sf:input type="hidden" id="recordId" path="recordId" />
 <sf:input type="hidden" id="diaryId" path="diaryId" />
 <sf:input type="hidden" id="pageDate" path="pageDate" />

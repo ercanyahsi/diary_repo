@@ -1,323 +1,189 @@
-@font-face { 
-  font-family: News Cycle; 
-    src: url('../fonts/NewsCycle-Regular.eot'); 
-    src: local("News Cycle"), url('../fonts/NewsCycle-Regular.ttf'); 
-} 
 
-html
-{ height: 100%;}
+html {
+	height: 100%;
+}
 
-*
-{ margin: 0;
-  padding: 0;}
+* {
+	margin: 0;
+	padding: 0;
+}
 
-body
-{ font: normal 90% Arial, Helvetica, sans-serif;
-  color: #000;
-  background: #FFF;
+body {
+	font: normal 90% Arial, Helvetica, sans-serif;
+	color: #000;
+	background: #FFF;
 }
 
 /* tell the browser to render HTML 5 elements as block */
-article, aside, figure, footer, header, hgroup, nav, section { 
-  display:block;
+article, aside, figure, footer, header, hgroup, nav, section {
+	display: block;
 }
 
-p
-{ padding: 0 0 10px 0;
-  line-height: 1.7em;
-  font-size: 100% }
+p {
+	padding: 0 0 10px 0;
+	line-height: 1.7em;
+	font-size: 100%
+}
 
-img
-{ border: 0;}
+img {
+	border: 0;
+}
 
-h1, h2, h3, h4, h5, h6 
-{ font: bold 150% 'News Cycle', Arial, sans-serif;
-  color: #E25506;
-  text-shadow: 1px 1px #AAA;
-  margin: 10px 0 10px 0;}
+h1, h2, h3, h4, h5, h6 {
+	font: bold 150% 'News Cycle', Arial, sans-serif;
+	color: #E25506;
+	margin: 10px 0 10px 0;
+}
 
-h2
-{ font: bold 150% 'News Cycle', Arial, sans-serif;}
+h2 {
+	font: bold 150% 'News Cycle', Arial, sans-serif;
+}
 
-h3
-{ font: bold 120% 'News Cycle', Arial, sans-serif;}
 
-h4, h5, h6
-{ margin: 0;
-  padding: 0 0 0px 0;
-  font: normal 120% 'News Cycle', Arial, sans-serif;
-  color: #FFF;
-  line-height: 1.5em;}
 
-h5, h6
-{ font: normal 95% 'News Cycle', Arial, sans-serif;
-  color: #888;
-  padding-bottom: 15px;}
-  
-span
-{ color: #000;}
+header {
+	position: relative;
+	background: #323232;
+	height: 70px;
+	padding:10px;
+}
+#menu {
+	float:right;
+	display:inline;
+	position:absolute;
+	top:10px;
+	right:10px;
+}
 
-a, a:hover
-{ color: #000;
-  background: transparent;
-  outline: none;
-  text-decoration: underline;}
+ul li {
+	text-align: center;
+	background: transparent;
+	display:inline;
+}
 
-a:hover
-{ text-decoration: none;}
+ul li a {
+	text-decoration:none;
+	color:white;
+	font-size:15px;
+	font-weight:bold;
+	padding-right:10px;
+}
+ul li a:hover {
+	text-decoration:none;
+	color:#E25506;
+	font-size:15px;
+	font-weight:bold;
+	padding-right:10px;
+}
 
-ul
-{ margin: 2px 0 22px 30px;
-  line-height: 1.7em;
-  font-style: normal;
-  font-size: 100%;}
+#site_content {
+	width: 100%;
+	height:100%;
+	padding-top: 20px;
+	overflow: hidden;
+	margin-bottom: 0px;
+	background: url(bg.jpg);
+}
 
-ol
-{ margin: 8px 0 22px 20px;}
 
-ol li
-{ margin: 0 0 11px 0;}
+#content {
+	width: 940px;
+	margin: 0 10px 20px 0;
+	float: left;
+}
 
-#main, header, #banner, #menubar, #site_content, footer, #content_grey, nav, #header_section
-{ margin-left: auto; 
-  margin-right: auto;}
-  
-header
-{ position: relative;
-  background: #323232;
-  height: 100px;} 
-  
-#header_section
-{ width: 940px;
-  height: 60px;
-  margin-bottom: 20px;} 
-  
-#welcome
-{ width: 280px;
-  float: left;
-  margin: 0 auto;
-  padding: 10px 0 10px 0;
-  background: transparent;} 
-   
-#welcome h2
-{ font: normal 260% 'News Cycle', Arial, sans-serif;
-  letter-spacing: -2px;
-  text-shadow: 1px 1px #000;
-  color: #E25506;}
-  
-nav
-{ width: 660px;
-  height: 50px;
-  margin-top: 42px;
-  float: right;}   
-  
-ul#nav
-{ margin:0;
-  float: right;}
+.content_item {
+	float: left;
+	width: 650px;
+	margin-bottom: 20px;
+}
 
-ul#nav li
-{ padding: 0 0 0 0px;
-  list-style: none;
-  margin: 2px 0 0 0;
-  display: inline;
-  text-align: center;   
-  background: transparent;}
 
-ul#nav li a
-{ font: bold 110% Arial, Helvetica, sans-serif;
-  height: 24px;
-  margin: 10px 0 0 20px;
-  text-shadow: 1px 1px #000;
-  padding: 6px 10px 6px 10px;
-  background: transparent; 
-  text-align: center;
-  color: #FFF;
-  text-shadow: 1px 1px #000;  
-  text-decoration: none;} 
-  
-ul#nav li.current a, ul#nav li:hover a
-{ text-shadow: 1px 1px #000;
-  color: #FFF;
-  background: #E25506;
-  background: -moz-linear-gradient(#FE9962, #E25506);
-  background: -o-linear-gradient(#FE9962, #E25506);
-  background: -webkit-linear-gradient(#FE9962, #E25506);
-  border-radius: 7px 7px 7px 7px;
-  -moz-border-radius: 7px 7px 7px 7px;
-  -webkit-border: 7px 7px 7px 7px;}
+#footer {
+	color: #FFF;
+	background: #323232;
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width:100%;
+	height:30px;
+}
 
-#site_content
-{ width: 940px;
-  padding-top: 20px;
-  overflow: hidden;
-  margin-bottom: 30px;} 
+.form_settings {
+	margin: 15px 0 0 0;
+}
 
-.sidebar_container
-{ float: right;
-  width: 240px;
-  padding: 0;
-  color: #000;}
+.form_settings p {
+	padding: 0 0 4px 0;
+}
 
-.sidebar
-{ float: left;
-  width: 240px;
-  margin: 0 0px 10px 0;}
+.form_settings span {
+	float: left;
+	width: 280px;
+	text-align: left;
+	text-shadow: none;
+}
 
-.sidebar_item
-{ width: 220px;}
+.form_settings input {
+	padding: 2px;
+	width: 299px;
+	height: 35px;
+	font: 100% arial;
+	border: 1px solid #E5E5DB;
+	color: #47433F;
+}
 
-.sidebar h2
-{ padding: 5px 0 0 0;
-  font: bold 150% 'News Cycle', Arial, sans-serif;
-  height: 30px;
-  color: #000;} 
-
-#content
-{ width: 940px;
-  margin: 0 10px 20px 0;
-  float: left;}
-
-.content_item
-{ float: left;
-  width: 650px;
-  margin-bottom: 20px;}
- 
-.content_imagetext
-{ width: 620px;
-  padding: 5px;
-  margin: 20px 0 0 0;
-  float: left;}
- 
-.content_image
-{ float: left; 
-  width: 150px;
-  height: 150px;
-  margin: 0 20px 10px 0;}
-  
-.content_container
-{ width: 300px;
-  padding: 5px;
-  margin: 20px 10px 0 0;
-  float: left;}
-  
-footer
-{ padding: 30px 0px;
-  font-weight: bold;
-  text-align: center; 
-  text-shadow: 1px 1px #000;
-  color: #FFF;
-  background: #323232;}
-
-footer a
-{ color: #FFF;
-  text-decoration: none;
-  padding-bottom: 20px;}
-
-footer a:hover
-{ text-decoration: underline;
-  color: #FFF;}
- 
-
-.form_settings
-{ margin: 15px 0 0 0;}
-
-.form_settings p
-{ padding: 0 0 4px 0;}
-
-.form_settings span
-{ float: left; 
-  width: 280px; 
-  text-align: left;
-  text-shadow: none;}
-  
-.form_settings input
-{ padding: 2px; 
-  width: 299px;  
-  height:35px;
-  font: 100% arial; 
-  border: 1px solid #E5E5DB;
-  color: #47433F;}
-  
-.form_settings input[type="checkbox"]
-{ padding: 2px 0; 
-  width: 15px; 
-  font: 100% arial; 
-  border: 0; 
-  background: #FFF; 
-  color: #47433F;
-  margin: 28px 0;}
+.form_settings input[type="checkbox"] {
+	padding: 2px 0;
+	width: 15px;
+	font: 100% arial;
+	border: 0;
+	background: #FFF;
+	color: #47433F;
+	margin: 28px 0;
+}
 
 ul img {
-  border: none;}
- 
-.divContainer{
+	border: none;
+}
+
+.divContainer {
 	display: inline;
 	background-color: white;
-	border: 1px solid black; 
+	border: 1px solid black;
 }
 
-.divItem{
-display:inline;
-float:left;;
-width: 130px;
-height: 105px;
-border: 4px #a12121 solid;
-background-color: #fffafa;
-padding: 9px;
-margin:3px;
-color: #002157;
-font-size: inherit;
-font-weight: inherit;
-font-family: inherit;
-font-style: inherit;
-text-decoration:inherit;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
-border-radius: 8px;
--moz-box-shadow: 0px 0px 3px 0px #333333;
--webkit-box-shadow: 0px 0px 3px 0px #333333;
-box-shadow: 0px 0px 3px 0px #333333;
+.divItem {
+    border-radius: 25px;
+    border: 2px solid #E25506;
+    padding: 20px; 
+    width: 100px;
+    height: 70px;
+    display:inline;
+    float:left;
+    margin:3px;
+    background-color:white;
 }
 
-.divItemFull{
-display:inline;
-float:left;;
-width: 130px;
-height: 105px;
-border: 4px #a12121 solid;
-background-color: #8080c0;
-padding: 9px;
-margin:3px;
-color: #ffffff;
-font-size: inherit;
-font-weight: inherit;
-font-family: inherit;
-font-style: inherit;
-text-decoration:inherit;
--webkit-border-radius: 8px;
--moz-border-radius: 8px;
-border-radius: 8px;
--moz-box-shadow: 0px 0px 3px 0px #333333;
--webkit-box-shadow: 0px 0px 3px 0px #333333;
-box-shadow: 0px 0px 3px 0px #333333;
+.divItem a {
+	text-decoration: none;
+	font-size:14px;
+	color:#E25506;
+	font-weight:bold;
 }
 
 .notebookLookTextarea {
- background: url(notebook.png) repeat-y;
- font: normal 14px verdana;
- line-height: 25px;
- padding: 2px 10px;
- border: solid 1px #ddd;
- width: 150px;
- height: 300px;
+	background: url(notebook.png) repeat-y;
+	font: normal 14px verdana;
+	line-height: 25px;
+	padding: 2px 10px;
+	border: solid 1px #ddd;
+	width: 150px;
+	height: 300px;
 }
 
-.notbookLookDiv{	
- background: url(notebook.png) repeat-y;
- font: normal 14px verdana;
- line-height: 25px;
- padding: 2px 10px;
- border: solid 1px #ddd;
- height: 200px;
- overflow: auto;
+
+#successMessage {
+	color:green;
+	font-weight:bold;	
 }

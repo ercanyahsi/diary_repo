@@ -10,11 +10,15 @@
 </head>
 <body>
  	 <tiles:insertAttribute name="top"></tiles:insertAttribute> 
- <div id="main">
  
 		<div id="site_content">
 			<div id="content">
-				<div class="content_item">
+			
+			
+<c:if test="${SUCCESS_MESSAGE != null}">
+  <div id="successMessage">${SUCCESS_MESSAGE}</div>
+</c:if> 
+
 <c:choose>
 	<c:when test = "${empty handledError}">
 	</c:when>
@@ -23,7 +27,6 @@
 	</c:otherwise>
 </c:choose>
 					<tiles:insertAttribute name="content"></tiles:insertAttribute>	
-				</div>
 		  </div><!--close content-->   	
      </div>
  	 <tiles:insertAttribute name="footer"></tiles:insertAttribute> 
