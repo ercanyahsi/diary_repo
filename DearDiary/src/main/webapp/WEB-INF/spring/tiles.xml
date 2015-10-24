@@ -30,4 +30,7 @@
 	<definition name="diary/write" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/diary/write.jsp" />
 	</definition>
+	<definition name="diary/selectdiary" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/diary/selectdiary.jsp" />
+	</definition>
 </tiles-definitions>

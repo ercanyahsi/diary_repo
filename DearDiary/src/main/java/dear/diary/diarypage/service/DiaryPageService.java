@@ -1,6 +1,7 @@
 package dear.diary.diarypage.service;
 
 import java.sql.Date;
+import java.util.List;
 import java.util.Random;
 
 import javax.transaction.Transactional;
@@ -21,7 +22,7 @@ public class DiaryPageService {
 	}
 
 	@Transactional
-	 public DiaryPage getByDate(Diary diary, Date date){
+	 public List<DiaryPage> getByDate(Diary diary, Date date){
 		 return diaryPageDAO.getByDate(diary, date);
 	 }
 	
@@ -43,5 +44,10 @@ public class DiaryPageService {
 		int choosen = generator.nextInt(max)+1;
 		return diaryPageDAO.loadByRecordId(diaryId, choosen);
 		
+	}
+
+	@Transactional
+	public DiaryPage loadByDate(Diary diary, Date date){
+		return diaryPageDAO.loadByDate(diary, date);
 	}
 }

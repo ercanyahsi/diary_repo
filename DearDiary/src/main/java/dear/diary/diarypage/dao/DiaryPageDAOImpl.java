@@ -4,15 +4,20 @@ import java.sql.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.hibernate.transform.AliasToBeanResultTransformer;
+import org.hibernate.transform.Transformers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import dear.diary.diary.model.Diary;
 import dear.diary.diarypage.model.DiaryPage;
+import dear.diary.diarypage.model.DiaryPageRow;
 
 @Repository
 public class DiaryPageDAOImpl implements DiaryPageDAO {
@@ -25,7 +30,19 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
         this.sessionFactory = sessionFactory;
     }
 
-    public DiaryPage getByDate(Diary diary, Date date){
+    public List<DiaryPage> getByDate(Diary diary, Date date){
+    	
+    	Query query = currentSession().createQuery("SELECT p FROM DiaryPage p left join fetch p.sharedPage s where p.diaryId =:diaryId ");
+
+    	query.setParameter("diaryId", diary.getDiaryId());
+    	
+        List<DiaryPage> list = (List<DiaryPage>) query.list();
+        
+    	return list;
+    }
+    
+
+    public DiaryPage loadByDate(Diary diary, Date date){
     	DiaryPage result = null;
     	
 

@@ -7,6 +7,11 @@
 <title>Home</title>
 <spring:url value="/resources/css/style.css" var="mainCss" />	
 <link href="${mainCss}" rel="stylesheet" />
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="https://code.jquery.com/ui/1.11.3/jquery-ui.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="https://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+
 </head>
 <body>
  	 <tiles:insertAttribute name="top"></tiles:insertAttribute> 

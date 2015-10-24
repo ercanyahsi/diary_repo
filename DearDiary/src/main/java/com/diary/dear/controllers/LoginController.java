@@ -49,8 +49,8 @@ public class LoginController {
 			User loadedUser = userService.loadUserByUserNameAndPassword(user.getUsername(), user.getPassword());
 			UserProfile up = ui.tools.LoginController.setUserProfile(session, loadedUser);
 			
-			Diary userDiary = up.getDiaries().iterator().next();
-			session.setAttribute(IConstants.RANDOM_DIARY_PAGE_KEY, diaryPageService.getRandomDiaryPage(userDiary.getDiaryId()) );
+//			Diary userDiary = up.getDiaries().iterator().next();
+//			session.setAttribute(IConstants.RANDOM_DIARY_PAGE_KEY, diaryPageService.getRandomDiaryPage(userDiary.getDiaryId()) );
 			
 			return "home";
 		}catch(Exception ex){

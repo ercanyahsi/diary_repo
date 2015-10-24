@@ -20,6 +20,12 @@ public class DateUtils {
 		sb.append((temp < 10) ? "0" + temp : String.valueOf(temp));
 		return Date.valueOf(sb.toString());
 	}
+	
+
+	public static java.sql.Date parseDate(String date) {
+		
+		return Date.valueOf(date.substring(6,10)+"-"+date.substring(3,5)+"-"+date.substring(0,2));
+	}
 
 
 	public static Date before(Date tarih, int days) {
