@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 
 import dear.diary.diary.model.Diary;
 import dear.diary.diary.service.DiaryService;
@@ -41,14 +40,10 @@ public class UserService {
 			//do nothing if user not exist
 		}
 
-		userDAO.saveUser(user);
 		Diary diary = new Diary();
 		diary.setDiaryName("<>");
-		diary.setUserId(user.getId());
 		
-		Set<Diary> diaries = new HashSet<Diary>();
-		diaries.add(diary);
-		user.setDiaries(diaries);
+		user.getDiaries().add(diary);
 		
 		userDAO.saveUser(user);
 	}

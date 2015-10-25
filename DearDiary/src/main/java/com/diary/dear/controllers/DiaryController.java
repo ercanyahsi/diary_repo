@@ -1,8 +1,6 @@
 package com.diary.dear.controllers;
 
 import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.Locale;
 import java.util.Set;
 
@@ -67,7 +65,7 @@ public class DiaryController {
 	@RequestMapping("/select")
 	public String selectDiary(Model model, HttpSession session){
 
-		return "diary/selectdiary";
+		return "redirect:/diary/write/"+DateUtils.getCurrentDate();
 	}
 
     @RequestMapping(value="/write/{date}", method=RequestMethod.GET)
@@ -80,7 +78,6 @@ public class DiaryController {
 		DiaryPage diaryPage = diarypageService.loadByDate(diary.getDiaryId(), date);
 		if (diaryPage==null){
 			diaryPage = new DiaryPage();
-			diaryPage.setDiaryId(diary.getDiaryId());
 			diaryPage.setPageDate(date);
 		}
 		
@@ -91,7 +88,13 @@ public class DiaryController {
     
 	
 	@RequestMapping("/save")
-	public String write(@ModelAttribute("diaryPage") DiaryPage diaryPage, BindingResult result, Model model, RedirectAttributes redirectAttributes){
+	public String write(@ModelAttribute("diaryPage") DiaryPage diaryPage, BindingResult result, Model model, HttpSession session, RedirectAttributes redirectAttributes){
+		
+		UserProfile up = LoginController.getUserProfile(session);
+		
+		Set<Diary> list = (Set<Diary>) up.getDiaries();
+		Diary diary = (Diary) list.iterator().next();
+		diaryPage.setDiaryId(diary.getDiaryId());
 		
 		diaryPage.setContentLanguage(1);
 		diarypageService.saveOrUpdateDiaryPage(diaryPage);

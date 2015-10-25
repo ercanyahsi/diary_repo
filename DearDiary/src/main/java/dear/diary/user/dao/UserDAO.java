@@ -1,7 +1,5 @@
 package dear.diary.user.dao;
 
-import java.util.List;
-
 import dear.diary.user.model.User;
 
 public interface UserDAO {

@@ -70,7 +70,15 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
 
 
     public void saveOrUpdateDiaryPage(DiaryPage diaryPage) {
-       currentSession().saveOrUpdate(diaryPage);
+    	
+    	DiaryPage pageLoaded = loadByDate(diaryPage.getDiaryId(), diaryPage.getPageDate());
+    	
+    	if (pageLoaded!=null) {
+    		diaryPage = pageLoaded;
+    	}
+    	
+    	currentSession().save(diaryPage);
+       
     }
     
 

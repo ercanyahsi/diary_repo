@@ -7,7 +7,11 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import dear.diary.diary.model.Diary;
 
 @Entity
 @Table(name="diary_pages")
@@ -15,10 +19,12 @@ public class DiaryPage {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
+	@Column(name="RECORD_ID")
 	private int recordId;
 	
 	@Column(name="DIARY_ID")
 	private int diaryId;
+
 	
 	@Column(name="PAGE_DATE")
 	private Date pageDate;
@@ -46,12 +52,6 @@ public class DiaryPage {
 	}
 	public void setRecordId(int recordId) {
 		this.recordId = recordId;
-	}
-	public int getDiaryId() {
-		return diaryId;
-	}
-	public void setDiaryId(int diaryId) {
-		this.diaryId = diaryId;
 	}
 	public Date getPageDate() {
 		return pageDate;
@@ -81,5 +81,14 @@ public class DiaryPage {
 	public void setShared(short shared) {
 		this.shared = shared;
 	}
+
+	public int getDiaryId() {
+		return diaryId;
+	}
+
+	public void setDiaryId(int diaryId) {
+		this.diaryId = diaryId;
+	}
+
 
 }

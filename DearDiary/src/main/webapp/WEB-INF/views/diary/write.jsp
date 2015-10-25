@@ -10,7 +10,7 @@
 <sf:input type="hidden" id="recordId" path="recordId" />
 <sf:input type="hidden" id="diaryId" path="diaryId" />
 <sf:input type="hidden" id="pageDate" path="pageDate" />
-<fmt:formatDate value="${diaryPage.pageDate}"/><br>
+<fmt:formatDate value="${diaryPage.pageDate}" pattern="dd.MM.yyyy"/><br>
 <sf:textarea id="content" path="content" style="width:800px" cssClass="notebookLookTextarea" />
 <input type="submit" value="<spring:message code='lbl.kaydet'  />">
 </sf:form>
