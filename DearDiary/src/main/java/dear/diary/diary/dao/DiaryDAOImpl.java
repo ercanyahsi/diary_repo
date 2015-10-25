@@ -22,4 +22,5 @@ public class DiaryDAOImpl implements DiaryDAO {
     public void saveDiary(Diary diary){
     	currentSession().save(diary);
     }
+    
 }

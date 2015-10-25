@@ -26,6 +26,9 @@
 	   		<a href='<spring:url value="/diary/select"/>'><spring:message code="lbl.gunlugeyaz"  /></a>
 	   	</li>
 	   	<li>
+	   		<a href='<spring:url value="/diary/list"/>'><spring:message code="lbl.yazdiklarim"  /></a>
+	   	</li>
+	   	<li>
 		<a href="void">${userProfile.username}&nbsp;</a>
 		<a href='<spring:url value="/login?logout"/>'>Logout</a>
 		</li>

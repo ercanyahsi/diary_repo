@@ -12,5 +12,6 @@ public interface DiaryPageDAO {
 	 public void saveOrUpdateDiaryPage(DiaryPage diaryPage);
 	 public int getMaxDiaryPageId(int diaryId);
 	 public DiaryPage loadByRecordId(int diaryId, int recordId);
-	 public DiaryPage loadByDate(Diary diary, Date date);
+	 public DiaryPage loadByDate(int diaryId, Date date);
+	 public void sharePage(int diaryId, Date date);
 }

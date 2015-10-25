@@ -47,7 +47,12 @@ public class DiaryPageService {
 	}
 
 	@Transactional
-	public DiaryPage loadByDate(Diary diary, Date date){
-		return diaryPageDAO.loadByDate(diary, date);
+	public DiaryPage loadByDate(int diaryId, Date date){
+		return diaryPageDAO.loadByDate(diaryId, date);
 	}
+	
+	@Transactional
+	 public void sharePage(int diaryId, Date date){
+		 diaryPageDAO.sharePage(diaryId, date);
+	 }
 }

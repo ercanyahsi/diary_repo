@@ -10,6 +10,5 @@
     <mapping resource="dear/diary/user/model/User.hbm.xml"/>
     <mapping resource="dear/diary/diary/model/Diary.hbm.xml"/>
     <mapping class="dear.diary.diarypage.model.DiaryPage"/>
-    <mapping class="dear.diary.sharedpage.model.SharedPage"/>
   </session-factory>
 </hibernate-configuration>
