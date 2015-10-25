@@ -36,6 +36,12 @@ public class User {
 	@Column(name="EMAIL")
 	private String email;
 	
+	@Column(name="VIEW_RIGHT")
+	private int viewRight=0;
+	
+	@Column(name="SHARE_COUNT")
+	private int shareCount=0;
+	
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="USER_ID")
 	private Set<Diary> diaries = new HashSet<Diary>();
@@ -70,6 +76,18 @@ public class User {
 	}
 	public void setDiaries(Set<Diary> diaries) {
 		this.diaries = diaries;
+	}
+	public int getViewRight() {
+		return viewRight;
+	}
+	public void setViewRight(int viewRight) {
+		this.viewRight = viewRight;
+	}
+	public int getShareCount() {
+		return shareCount;
+	}
+	public void setShareCount(int shareCount) {
+		this.shareCount = shareCount;
 	}
 
 }

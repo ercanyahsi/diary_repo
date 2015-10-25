@@ -14,6 +14,8 @@ import org.springframework.stereotype.Repository;
 
 import dear.diary.diary.model.Diary;
 import dear.diary.diarypage.model.DiaryPage;
+import dear.diary.user.model.User;
+import util.common.constants.IConstants;
 
 @Repository
 public class DiaryPageDAOImpl implements DiaryPageDAO {
@@ -54,6 +56,14 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     }
     
     public void sharePage(int diaryId, Date date){
+    	
+    	Query queryForUser = currentSession().createQuery("select user from User user left join fetch user.diaries diaries where diaries.diaryId=:diaryId");
+    	queryForUser.setParameter("diaryId", diaryId);
+    	User user = (User) queryForUser.list().iterator().next();
+    	
+    	user.setViewRight(user.getViewRight()+IConstants.VIEW_RIGHT_MULTIPLIER);
+    	user.setShareCount(user.getShareCount()+1);
+    	
     	DiaryPage pageToShare = loadByDate(diaryId, date);
     	pageToShare.setShared((short)1);
     }
@@ -74,10 +84,11 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     	DiaryPage pageLoaded = loadByDate(diaryPage.getDiaryId(), diaryPage.getPageDate());
     	
     	if (pageLoaded!=null) {
-    		diaryPage = pageLoaded;
+    		pageLoaded.setContent(diaryPage.getContent());
+    	}else{
+        	currentSession().save(diaryPage);    		
     	}
     	
-    	currentSession().save(diaryPage);
        
     }
     
