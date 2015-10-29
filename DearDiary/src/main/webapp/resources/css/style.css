@@ -89,7 +89,7 @@ ul li a:hover {
 
 
 #content {
-	width: 940px;
+	width: 100%;
 	margin: 0 10px 20px 0;
 	float: left;
 }
@@ -156,10 +156,10 @@ ul img {
 }
 
 .divItem {
-    border-radius: 25px;
+    border-radius: 15px;
     border: 2px solid #E25506;
     padding: 20px; 
-    width: 300px;
+    width: 200px;
     height: 70px;
     display:inline;
     float:left;
@@ -168,6 +168,10 @@ ul img {
     font-size:11px;
 	color:black;
 	font-weight:bold;
+    background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1,#f3f3f3));
+    border: 1px solid #ccc;
+    -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
+    -webkit-border-bottom-right-radius: 6px 50px;    
 }
 
 .divItem a {

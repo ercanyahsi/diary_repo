@@ -55,4 +55,9 @@ public class DiaryPageService {
 	public void sharePage(int diaryId, Date date) {
 		diaryPageDAO.sharePage(diaryId, date);
 	}
+	
+	@Transactional
+	public List<DiaryPage> getSharedList(int diaryId){
+		return diaryPageDAO.getSharedList(diaryId);
+	}
 }

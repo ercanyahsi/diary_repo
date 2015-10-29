@@ -14,4 +14,5 @@ public interface DiaryPageDAO {
 	 public DiaryPage loadByRecordId(int diaryId, int recordId);
 	 public DiaryPage loadByDate(int diaryId, Date date);
 	 public void sharePage(int diaryId, Date date);
+	 public List<DiaryPage> getSharedList(int diaryId);
 }

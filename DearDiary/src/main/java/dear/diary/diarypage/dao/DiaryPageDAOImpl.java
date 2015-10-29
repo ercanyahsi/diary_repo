@@ -106,5 +106,11 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     	else
     		return null;
     }
+    
+    public List<DiaryPage> getSharedList(int diaryId){
+    	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId ");
+    	query.setParameter("diaryId", diaryId);
+    	return (List<DiaryPage>) query.list();
+    }
  
 }

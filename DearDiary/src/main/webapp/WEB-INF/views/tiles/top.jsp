@@ -29,6 +29,9 @@
 	   		<a href='<spring:url value="/diary/list"/>'><spring:message code="lbl.yazdiklarim"  /></a>
 	   	</li>
 	   	<li>
+	   		<a href='<spring:url value="/shared/listshared"/>'><spring:message code="lbl.paylasilanlar"  /></a>
+	   	</li>
+	   	<li>
 		<a href="void">${userProfile.username}&nbsp;</a>
 		<a href='<spring:url value="/login?logout"/>'>Logout</a>
 		</li>
