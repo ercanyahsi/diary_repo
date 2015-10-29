@@ -14,6 +14,6 @@
 <input type="text" name="dateToChoose" id="dateToChoose" size="10" value="<fmt:formatDate value="${diaryPage.pageDate}" pattern="dd.MM.yyyy"/>">
 <!-- <input type="button" onclick="gotoDate()" class="btn-success" value='<spring:message code="lbl.tarihinegit" />'/><br> -->
 <br>
-<div style="display:block;"><sf:textarea id="content" path="content" style="width:800px" cssClass="notebookLookTextarea" /></div>
-<div style="display:block;"><input type="submit"  class="btn-success" value="<spring:message code='lbl.kaydet'  />"></div>
+<div style="display:block;"><sf:textarea id="content" path="content" cssClass="notebookLookTextarea" /></div>
+<div style="display:block;position:fixed;"><input type="submit"  class="btn-success" value="<spring:message code='lbl.kaydet'  />"></div>
 </sf:form>
