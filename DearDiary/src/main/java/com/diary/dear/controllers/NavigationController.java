@@ -12,6 +12,10 @@ public class NavigationController {
 
 	@RequestMapping(value = "/{page}")
 	public String navigate(@PathVariable String page, Model model) {
-		return page;
+		String pageToGo =  page.replace('_', '/');
+		return pageToGo;
 	}
+
+	
+	
 }

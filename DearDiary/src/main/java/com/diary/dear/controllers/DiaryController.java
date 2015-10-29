@@ -69,8 +69,9 @@ public class DiaryController {
 	}
 
     @RequestMapping(value="/write/{date}", method=RequestMethod.GET)
-	public String toWrite(@PathVariable Date date, HttpSession session, Model model){
+	public String toWrite(@PathVariable Date date, HttpSession session, Model model) throws Exception{
 		UserProfile up = LoginController.getUserProfile(session);
+		
 		
 		Set<Diary> list = (Set<Diary>) up.getDiaries();
 		Diary diary = (Diary) list.iterator().next();
@@ -113,5 +114,6 @@ public class DiaryController {
     	redirectAttributes.addFlashAttribute("SUCCESS_MESSAGE", messageSource.getMessage("islem.basarili", new String[]{}, Locale.ENGLISH));
 		return "redirect:/diary/list/";
 	}
+    
 
 }

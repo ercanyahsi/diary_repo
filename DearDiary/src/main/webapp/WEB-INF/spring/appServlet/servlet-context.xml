@@ -88,7 +88,7 @@
 	<beans:bean
 		class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor" />
 	<context:component-scan base-package="dear.diary.user.dao" />
-
+	
 	<mvc:interceptors>
 		<mvc:interceptor>
 			<mvc:mapping path="/diary/**" />
