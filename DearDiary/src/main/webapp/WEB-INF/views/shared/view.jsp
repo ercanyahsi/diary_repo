@@ -7,17 +7,9 @@
 <%@ page session="false"%>
 <div style="divContainer">
 
-	<c:forEach  var="diaryPage" items="${sharedList}">
+	<div class="divItem" style="width:50%; height:50%;overflow: auto;">
+		<fmt:formatDate value="${diaryPage.pageDate}"  pattern="dd/MM/yyyy" /> <br><br>
+		<c:out value="${ diaryPage.content}"></c:out>
+	</div>
 
-			<div class="divItem">
-
-			<fmt:formatDate value="${diaryPage.pageDate}"  pattern="dd/MM/yyyy" /> <br><br>
-			<c:out value="${fn:substring(diaryPage.content,0, 100)}" /> 
-			
-			<div class="divItemLink">			
-				<a href="<c:url value="/shared/view/${diaryPage.recordId}" />"><spring:message code="lbl.goruntule" /></a>
-			</div>
-	
-		</div>
-	</c:forEach>
 </div>

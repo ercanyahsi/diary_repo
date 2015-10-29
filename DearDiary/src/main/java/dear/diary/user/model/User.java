@@ -11,11 +11,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;
 
 import dear.diary.diary.model.Diary;
+import dear.diary.diarypage.model.DiaryPage;
 
 
 @Entity
@@ -45,6 +48,13 @@ public class User {
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY)
 	@JoinColumn(name="USER_ID")
 	private Set<Diary> diaries = new HashSet<Diary>();
+	
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(name="user_views",
+			joinColumns = {@JoinColumn(name="USER_ID", nullable=false, updatable=false)},
+			inverseJoinColumns = {@JoinColumn(name="RECORD_ID", nullable=false, updatable=false)}	
+	)
+	private Set<DiaryPage> userviews = new HashSet<DiaryPage>();
 	
 	public int getId() {
 		return id;
@@ -88,6 +98,12 @@ public class User {
 	}
 	public void setShareCount(int shareCount) {
 		this.shareCount = shareCount;
+	}
+	public Set<DiaryPage> getUserviews() {
+		return userviews;
+	}
+	public void setUserviews(Set<DiaryPage> userviews) {
+		this.userviews = userviews;
 	}
 
 }

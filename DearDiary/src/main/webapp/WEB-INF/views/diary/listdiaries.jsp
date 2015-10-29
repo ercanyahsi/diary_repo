@@ -13,16 +13,18 @@
 
 			<fmt:formatDate value="${diaryPage.pageDate}"  pattern="dd/MM/yyyy" /> <br>
 			<c:out value="${fn:substring(diaryPage.content,0, 100)}" /> 
-			<a href="${contextPath}/dear/diary/write/${diaryPage.pageDate}"><spring:message code="lbl.tumu" />...</a>
-			<br><br>
-			<c:choose >
-				<c:when test="${diaryPage.shared!=0}">
-					<spring:message code="lbl.paylasildi"  />
-				</c:when>
-				<c:otherwise>
-					<a href="${contextPath}/dear/diary/share/${diaryPage.pageDate}"><spring:message code="lbl.isimsizolarakpaylas" /></a>
-				</c:otherwise>
-			</c:choose>
+			<a href="${contextPath}/dear/diary/write/${diaryPage.pageDate}"><spring:message code="lbl.devam" />...</a>
+			
+			<div class="divItemLink">
+				<c:choose >
+					<c:when test="${diaryPage.shared!=0}">
+						[<spring:message code="lbl.paylasildi"  />]
+					</c:when>
+					<c:otherwise>
+						<a href="${contextPath}/dear/diary/share/${diaryPage.pageDate}"><spring:message code="lbl.isimsizolarakpaylas" /></a>
+					</c:otherwise>
+				</c:choose>
+			</div>
 		</div>
 	</c:forEach>
 	

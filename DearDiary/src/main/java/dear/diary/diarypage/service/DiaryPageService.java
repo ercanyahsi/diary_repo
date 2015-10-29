@@ -60,4 +60,9 @@ public class DiaryPageService {
 	public List<DiaryPage> getSharedList(int diaryId){
 		return diaryPageDAO.getSharedList(diaryId);
 	}
+	
+	@Transactional
+	 public DiaryPage viewPage(int userId, int recordId) throws Exception {
+		return diaryPageDAO.viewPage(userId, recordId);
+	}
 }

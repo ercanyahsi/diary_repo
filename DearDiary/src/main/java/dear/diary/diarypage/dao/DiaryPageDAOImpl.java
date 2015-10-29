@@ -112,5 +112,29 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     	query.setParameter("diaryId", diaryId);
     	return (List<DiaryPage>) query.list();
     }
+    
+    public DiaryPage viewPage(int userId, int recordId) throws Exception {
+    	List<Object> list = currentSession().createQuery("select p.shared from DiaryPage p where p.recordId=:recordId").setParameter("recordId", recordId).list();
+    	int shared = Integer.parseInt(list.get(0).toString());
+    	if (shared==0)
+    		throw new Exception("Görüntüleme yetkiniz bulunmamaktadýr.");
+
+    	
+    	DiaryPage dp = (DiaryPage) currentSession().get(DiaryPage.class, recordId);
+    	
+    	
+    	Query queryShared = currentSession().createQuery("select u from User u left join fetch u.userviews v where u.id=:userId ")
+    			.setParameter("userId", userId);
+    	
+    	User usr = (User) queryShared.list().iterator().next();
+    	
+    	
+    	if (!usr.getUserviews().contains(dp)){
+    		usr.setViewRight(usr.getViewRight()-1);
+    		usr.getUserviews().add(dp);
+    	}
+    	
+    	return dp;
+    }
  
 }

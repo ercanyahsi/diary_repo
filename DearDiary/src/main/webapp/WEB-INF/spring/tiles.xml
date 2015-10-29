@@ -36,4 +36,7 @@
 	<definition name="shared/listshared" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/shared/listshared.jsp" />
 	</definition>
+	<definition name="shared/view" extends="template">
+		<put-attribute name="content" value="/WEB-INF/views/shared/view.jsp" />
+	</definition>
 </tiles-definitions>

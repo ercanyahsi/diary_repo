@@ -12,6 +12,8 @@ body {
 	font: normal 90% Arial, Helvetica, sans-serif;
 	color: #000;
 	background: #FFF;
+	background-image:url(bluebackground.jpg);
+	background-size: cover;
 }
 
 /* tell the browser to render HTML 5 elements as block */
@@ -77,14 +79,10 @@ ul li a:hover {
 }
 
 #site_content {
-	width: 100%;
-	height:100%;
 	padding-top: 20px;
 	padding:5px;
 	overflow: hidden;
 	margin-bottom: 0px;
-	background-image:url(bluebackground.jpg);
-	background-size: cover;
 }
 
 
@@ -128,7 +126,6 @@ ul li a:hover {
 
 .form_settings input {
 	padding: 2px;
-	width: 299px;
 	height: 35px;
 	font: 100% arial;
 	border: 1px solid #E5E5DB;
@@ -160,18 +157,26 @@ ul img {
     border: 2px solid #E25506;
     padding: 20px; 
     width: 200px;
-    height: 70px;
+    height: 150px;
     display:inline;
     float:left;
     margin:3px;
     background-color:white;
     font-size:11px;
 	color:black;
-	font-weight:bold;
     background: -webkit-gradient(linear, 0% 20%, 0% 1000%, from(#fff), to(#fff), color-stop(.1,#f3f3f3));
     border: 1px solid #ccc;
     -webkit-box-shadow: 0px 3px 30px rgba(0, 0, 0, 0.1) inset;
-    -webkit-border-bottom-right-radius: 6px 50px;    
+    -webkit-border-bottom-right-radius: 6px 50px;
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 2em;    
+	position:relative;
+}
+
+.divItemLink {
+	position:absolute;
+	bottom:0px;
 }
 
 .divItem a {
@@ -185,10 +190,11 @@ ul img {
 	background: url(notebook.png) repeat-y;
 	font: normal 14px verdana;
 	line-height: 25px;
-	padding: 2px 10px;
+	padding: 2px 105px;
 	border: solid 1px #ddd;
 	width: 150px;
 	height: 300px;
+	display: block;
 }
 
 

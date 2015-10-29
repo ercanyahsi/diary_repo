@@ -15,4 +15,5 @@ public interface DiaryPageDAO {
 	 public DiaryPage loadByDate(int diaryId, Date date);
 	 public void sharePage(int diaryId, Date date);
 	 public List<DiaryPage> getSharedList(int diaryId);
+	 public DiaryPage viewPage(int userId, int recordId) throws Exception;
 }

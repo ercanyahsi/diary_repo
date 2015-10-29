@@ -12,8 +12,8 @@
 <sf:input type="hidden" id="diaryId" path="diaryId" />
 <sf:input type="hidden" id="pageDate" path="pageDate" />
 <input type="text" name="dateToChoose" id="dateToChoose" size="10" value="<fmt:formatDate value="${diaryPage.pageDate}" pattern="dd.MM.yyyy"/>">
-<input type="button" onclick="gotoDate()" value='<spring:message code="lbl.tarihinegit" />'/>
+<!-- <input type="button" onclick="gotoDate()" class="btn-success" value='<spring:message code="lbl.tarihinegit" />'/><br> -->
 <br>
-<sf:textarea id="content" path="content" style="width:800px" cssClass="notebookLookTextarea" />
-<input type="submit" value="<spring:message code='lbl.kaydet'  />">
+<div style="display:block;"><sf:textarea id="content" path="content" style="width:800px" cssClass="notebookLookTextarea" /></div>
+<div style="display:block;"><input type="submit"  class="btn-success" value="<spring:message code='lbl.kaydet'  />"></div>
 </sf:form>

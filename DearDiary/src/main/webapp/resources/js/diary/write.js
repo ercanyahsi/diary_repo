@@ -1,6 +1,13 @@
 $(document).ready(function(){
 	
-	$("#dateToChoose").datepicker({ dateFormat: 'dd.mm.yy' });
+	$("#dateToChoose").datepicker({ 
+		dateFormat: 'dd.mm.yy', 
+		
+		onSelect: function(date) {
+			gotoDate();
+        } 
+			
+	});
 	
 });
 
