@@ -41,6 +41,9 @@ public class DiaryPage {
 	@Column(name = "SHARED")
 	private short shared = 0;
 
+	@Column(name = "LIKE_COUNT")
+	private int likeCount = 0;
+
 	public DiaryPage() {
 
 	}
@@ -116,6 +119,14 @@ public class DiaryPage {
 	@Override
 	public int hashCode() { 
 		return this.getRecordId();
+	}
+
+	public int getLikeCount() {
+		return likeCount;
+	}
+
+	public void setLikeCount(int likeCount) {
+		this.likeCount = likeCount;
 	}
 
 }

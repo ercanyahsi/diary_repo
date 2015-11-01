@@ -15,7 +15,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-import javax.validation.constraints.Min;
+import javax.validation.constraints.Min;import org.hibernate.annotations.LazyCollectionOption;
 
 import dear.diary.diary.model.Diary;
 import dear.diary.diarypage.model.DiaryPage;
@@ -55,6 +55,13 @@ public class User {
 			inverseJoinColumns = {@JoinColumn(name="RECORD_ID", nullable=false, updatable=false)}	
 	)
 	private Set<DiaryPage> userviews = new HashSet<DiaryPage>();
+	
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(name="user_likes",
+		joinColumns = {@JoinColumn(name="USER_ID", nullable=false)},
+		inverseJoinColumns = {@JoinColumn(name="RECORD_ID")}
+	)
+	private Set<DiaryPage> userLikes = new HashSet<DiaryPage>();
 	
 	public int getId() {
 		return id;
@@ -104,6 +111,12 @@ public class User {
 	}
 	public void setUserviews(Set<DiaryPage> userviews) {
 		this.userviews = userviews;
+	}
+	public Set<DiaryPage> getUserLikes() {
+		return userLikes;
+	}
+	public void setUserLikes(Set<DiaryPage> userLikes) {
+		this.userLikes = userLikes;
 	}
 
 }

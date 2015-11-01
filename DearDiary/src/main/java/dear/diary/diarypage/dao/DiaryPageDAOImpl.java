@@ -123,7 +123,7 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     	DiaryPage dp = (DiaryPage) currentSession().get(DiaryPage.class, recordId);
     	
     	
-    	Query queryShared = currentSession().createQuery("select u from User u left join fetch u.userviews v where u.id=:userId ")
+    	Query queryShared = currentSession().createQuery("select u from User u left join fetch u.userviews v  where u.id=:userId ")
     			.setParameter("userId", userId);
     	
     	User usr = (User) queryShared.list().iterator().next();

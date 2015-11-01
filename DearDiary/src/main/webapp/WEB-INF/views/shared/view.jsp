@@ -11,5 +11,14 @@
 		<fmt:formatDate value="${diaryPage.pageDate}"  pattern="dd/MM/yyyy" /> <br><br>
 		<c:out value="${ diaryPage.content}"></c:out>
 	</div>
+	<c:choose>
+		<c:when test="${userLike}">
+			<a href='<spring:url value="/shared/unlike/${diaryPage.recordId }"/>'><img alt="Like" src='<spring:url value="/resources/images/full.png" />'></a>
+		</c:when>
+		<c:when test="${!userLike}">
+			<a href='<spring:url value="/shared/like/${diaryPage.recordId }"/>'><img alt="Like" src='<spring:url value="/resources/images/empty.png" />'></a>
+		</c:when>
+	</c:choose>
+	<c:out value="${diaryPage.likeCount}"></c:out>
 
 </div>

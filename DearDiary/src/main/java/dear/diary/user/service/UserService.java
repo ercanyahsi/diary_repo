@@ -1,8 +1,5 @@
 package dear.diary.user.service;
 
-import java.util.HashSet;
-import java.util.Set;
-
 import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
@@ -56,5 +53,20 @@ public class UserService {
 	@Transactional
 	public User loadUserByUserNameAndPassword(String username, String password) throws Exception {
 		return userDAO.loadUserByUserNameAndPassword(username, password);
+	}
+
+	@Transactional
+	public boolean userLike(int userId, int recordId) {
+		return userDAO.userLike(userId, recordId);
+	}
+	
+	@Transactional
+	public void like(int userId, int recordId) {
+		userDAO.like(userId, recordId);
+	}
+	
+	@Transactional
+	public void unlike(int userId, int recordId) {
+		userDAO.unlike(userId, recordId);
 	}
 }

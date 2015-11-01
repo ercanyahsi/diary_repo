@@ -10,6 +10,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import dear.diary.diarypage.model.DiaryPage;
 import dear.diary.user.model.User;
 
 @Repository
@@ -49,6 +50,22 @@ public class UserDAOImpl implements UserDAO {
 			throw new Exception("User Not Found");
 		return (User) list.iterator().next();
 	}
+	
+	public boolean userLike(int userId, int recordId) {
+
+    	Query queryShared = currentSession().createQuery("select count(*) from User u join u.userLikes l where u.id=:userId and l.recordId=:recordId ")
+    			.setParameter("userId", userId)
+    			.setParameter("recordId", recordId);
+    	
+    	List lst = queryShared.list();
+    	
+    	if (lst.size()==0)
+    		return false;
+    	if (Integer.parseInt(lst.get(0).toString())==1)
+    		return true;
+    	else 
+    		return false;
+	}
 
 	public SessionFactory getSessionFactory() {
 		return sessionFactory;
@@ -56,5 +73,38 @@ public class UserDAOImpl implements UserDAO {
 
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+
+	public void like(int userId, int recordId) {
+
+    	Query queryShared = currentSession().createQuery("select u from User u left join fetch u.userLikes l where u.id=:userId ")
+    			.setParameter("userId", userId);
+    	
+    	
+    	DiaryPage dp = (DiaryPage) currentSession().get(DiaryPage.class, recordId);
+    	
+    	User user =  (User) queryShared.list().iterator().next();
+    	if (!user.getUserLikes().contains(dp)) {
+    		user.getUserLikes().add(dp);
+    		dp.setLikeCount(dp.getLikeCount()+1);
+    	}
+	}
+	
+
+
+	public void unlike(int userId, int recordId) {
+
+    	Query queryShared = currentSession().createQuery("select u from User u left join fetch u.userLikes l where u.id=:userId ")
+    			.setParameter("userId", userId);
+    	
+    	
+    	DiaryPage dp = (DiaryPage) currentSession().get(DiaryPage.class, recordId);
+    	
+    	User user =  (User) queryShared.list().iterator().next();
+    	if (user.getUserLikes().contains(dp)) {
+    		user.getUserLikes().remove(dp);
+    		dp.setLikeCount(dp.getLikeCount()-1);
+    	}
 	}
 }
