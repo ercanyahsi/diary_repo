@@ -32,7 +32,10 @@
 	   		<a href='<spring:url value="/shared/listshared"/>'><spring:message code="lbl.paylasilanlar"  /></a>
 	   	</li>
 	   	<li>
-		<a href="void">${userProfile.username}&nbsp;</a>
+	   		<a href='<spring:url value="/shared/userviewed"/>'><spring:message code="lbl.dahaoncegoruntuledikleriniz"  /></a>
+	   	</li>
+	   	<li>
+		<a href='<spring:url value="/user/${userProfile.username}"/>'>${userProfile.username}</a>
 		<a href='<spring:url value="/login?logout"/>'>Logout</a>
 		</li>
 	</c:otherwise>

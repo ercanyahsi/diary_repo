@@ -1,13 +1,19 @@
 package dear.diary.diarypage.model;
 
 import java.sql.Date;
+import java.util.HashSet;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -15,6 +21,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 import dear.diary.diary.model.Diary;
+import dear.diary.user.model.User;
 import javassist.expr.Instanceof;
 
 @Entity
@@ -43,6 +50,10 @@ public class DiaryPage {
 
 	@Column(name = "LIKE_COUNT")
 	private int likeCount = 0;
+
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL, mappedBy="userviews")
+	private Set<User> users = new HashSet<User>();
+	
 
 	public DiaryPage() {
 
@@ -127,6 +138,14 @@ public class DiaryPage {
 
 	public void setLikeCount(int likeCount) {
 		this.likeCount = likeCount;
+	}
+
+	public Set<User> getUsers() {
+		return users;
+	}
+
+	public void setUsers(Set<User> users) {
+		this.users = users;
 	}
 
 }

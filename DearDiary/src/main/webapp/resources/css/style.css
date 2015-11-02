@@ -9,7 +9,7 @@ html {
 }
 
 body {
-	font: normal 90% Arial, Helvetica, sans-serif;
+	font-family: 'Open Sans', sans-serif;
 	color: #000;
 	background: #FFF;
 	background-image:url(bluebackground.jpg);
@@ -37,14 +37,16 @@ img {
 	border: 0;
 }
 
-h1, h2, h3, h4, h5, h6 {
-	font: bold 150% 'News Cycle', Arial, sans-serif;
+h1, h3, h4, h5, h6 {
+	font-family: 'Open Sans', sans-serif;
 	color: #C44762;
 	margin: 10px 0 10px 0;
+	font-size:18px;
 }
 
 h2 {
 	font-family: 'Lobster', cursive;
+	color: #C44762;
 	font-size:33px;
 	letter-spacing:3px;
 	text-shadow: -1px 0 white, 0 1px white, 1px 0 white, 0 -1px white;
@@ -98,8 +100,10 @@ ul li a:hover {
 
 #contentinc {
 	width: 100%;
+	height:80%;
 	margin: 0 10px 20px 0;
 	float: left;
+	overflow: auto;
 }
 
 .content_item {
@@ -152,6 +156,13 @@ ul li a:hover {
 .divItemLink {
 	position:absolute;
 	bottom:0px;
+}
+
+.divItemBegeni {
+	position:absolute;
+	top:17px;
+	right:17px;
+	
 }
 
 .divItem a {

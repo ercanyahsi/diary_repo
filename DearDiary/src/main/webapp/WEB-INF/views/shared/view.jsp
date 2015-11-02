@@ -13,10 +13,10 @@
 	</div>
 	<c:choose>
 		<c:when test="${userLike}">
-			<a href='<spring:url value="/shared/unlike/${diaryPage.recordId }"/>'><img alt="Like" src='<spring:url value="/resources/images/full.png" />'></a>
+			<a href='<spring:url value="/shared/unlike/${diaryPage.recordId }"/>'><img alt="Unlike" align="absmiddle" title='<spring:message code="lbl.vazgec" />' src='<spring:url value="/resources/images/full.png" />'></a>
 		</c:when>
 		<c:when test="${!userLike}">
-			<a href='<spring:url value="/shared/like/${diaryPage.recordId }"/>'><img alt="Like" src='<spring:url value="/resources/images/empty.png" />'></a>
+			<a href='<spring:url value="/shared/like/${diaryPage.recordId }"/>'><img alt="Like" align="absmiddle" title='<spring:message code="lbl.begen" />' src='<spring:url value="/resources/images/empty.png" />'></a>
 		</c:when>
 	</c:choose>
 	<c:out value="${diaryPage.likeCount}"></c:out>

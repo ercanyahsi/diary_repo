@@ -28,8 +28,17 @@ public class SharedDiaryController {
 	public String sharedList(Model model, HttpSession session) {
 
 		UserProfile up = LoginController.getUserProfile(session);
-		model.addAttribute("sharedList", diarypageService.getSharedList(up.getDiaries().iterator().next().getDiaryId()));
+		model.addAttribute("sharedList", diarypageService.getSharedList(up.getId(), up.getDiaries().iterator().next().getDiaryId()));
+		model.addAttribute("userViewedList", diarypageService.getSharedUserViewedList(up.getId(), up.getDiaries().iterator().next().getDiaryId()));
 		return "shared/listshared";
+	}
+
+	@RequestMapping("/userviewed")
+	public String userViewedList(Model model, HttpSession session) {
+
+		UserProfile up = LoginController.getUserProfile(session);
+		model.addAttribute("userViewedList", diarypageService.getSharedUserViewedList(up.getId(), up.getDiaries().iterator().next().getDiaryId()));
+		return "shared/userviewed";
 	}
 
 	@RequestMapping("/like/{recordId}")

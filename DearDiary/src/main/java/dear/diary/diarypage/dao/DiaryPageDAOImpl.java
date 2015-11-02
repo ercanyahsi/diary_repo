@@ -107,9 +107,24 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     		return null;
     }
     
-    public List<DiaryPage> getSharedList(int diaryId){
-    	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId ");
+    public List<DiaryPage> getSharedList(int userId, int diaryId){
+    	
+    	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId and p.recordId not in (select k.recordId from User u join u.userviews k where u.id = :userId) ");
     	query.setParameter("diaryId", diaryId);
+    	query.setParameter("userId", userId);
+    	
+    	// user load edilecek ve user views tablosundakinler normal listeden çýkarilacak sonrasýnda 2 ayrý liste halinde gösterebiliriz
+    	return (List<DiaryPage>) query.list();
+    }
+    
+
+    public List<DiaryPage> getSharedUserViewedList(int userId, int diaryId){
+    	
+    	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId and p.recordId in (select k.recordId from User u join u.userviews k where u.id = :userId) ");
+    	query.setParameter("diaryId", diaryId);
+    	query.setParameter("userId", userId);
+    	
+    	// user load edilecek ve user views tablosundakinler normal listeden çýkarilacak sonrasýnda 2 ayrý liste halinde gösterebiliriz
     	return (List<DiaryPage>) query.list();
     }
     
