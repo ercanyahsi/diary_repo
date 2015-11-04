@@ -6,11 +6,12 @@
 <%@ page session="false"%>
 
 <script type="text/javascript" src="/dear/resources/js/diary/write.js"></script>
-
-<sf:form  name="input" method="post" action="/dear/diary/save" modelAttribute="diaryPage" cssClass="form_settings">
+<c:url var="saveUrl" value='/diary/save'/>
+<sf:form  name="input" method="post" action='${saveUrl}' modelAttribute="diaryPage" cssClass="form_settings">
 <sf:input type="hidden" id="recordId" path="recordId" />
 <sf:input type="hidden" id="diaryId" path="diaryId" />
 <sf:input type="hidden" id="pageDate" path="pageDate" />
+
 <input type="text" name="dateToChoose" id="dateToChoose" size="10" value="<fmt:formatDate value="${diaryPage.pageDate}" pattern="dd.MM.yyyy"/>">
 <!-- <input type="button" onclick="gotoDate()" class="btn-success" value='<spring:message code="lbl.tarihinegit" />'/><br> -->
 <br>
