@@ -27,12 +27,26 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     public DiaryPageDAOImpl(SessionFactory sessionFactory) {
         this.sessionFactory = sessionFactory;
     }
+    
+    public long getTotalCount(Diary diary, Date date) {
+    	Query query = currentSession().createQuery("SELECT count(p.recordId) FROM DiaryPage p where p.diaryId =:diaryId ");
+    	query.setParameter("diaryId", diary.getDiaryId());
+    	Long result = (Long) query.uniqueResult();
+    	return result;    	
+    }
 
-    public List<DiaryPage> getByDate(Diary diary, Date date){
+    public List<DiaryPage> getByDate(Diary diary, Date date, int pageNumber, int pageSize){
     	
-    	Query query = currentSession().createQuery("SELECT p FROM DiaryPage p where p.diaryId =:diaryId ");
+    	long totalCount = getTotalCount(diary, date);
+    	
+    	Query query = currentSession().createQuery("SELECT p FROM DiaryPage p where p.diaryId =:diaryId order by p.pageDate desc ");
+        
+    	int lastPageNumber = (int) ((totalCount / pageSize) + 1);
 
     	query.setParameter("diaryId", diary.getDiaryId());
+    	
+    	query.setFirstResult((pageNumber - 1) * pageSize);
+    	query.setMaxResults(pageSize);
     	
         List<DiaryPage> list = (List<DiaryPage>) query.list();
         
@@ -109,7 +123,7 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     
     public List<DiaryPage> getSharedList(int userId, int diaryId){
     	
-    	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId and p.recordId not in (select k.recordId from User u join u.userviews k where u.id = :userId) ");
+    	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId and p.recordId not in (select k.recordId from User u join u.userviews k where u.id = :userId)  ");
     	query.setParameter("diaryId", diaryId);
     	query.setParameter("userId", userId);
     	

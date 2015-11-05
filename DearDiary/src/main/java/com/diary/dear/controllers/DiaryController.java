@@ -23,6 +23,7 @@ import dear.diary.diarypage.service.DiaryPageService;
 import ui.model.UserProfile;
 import ui.tools.DateUtils;
 import ui.tools.LoginController;
+import util.common.constants.IConstants;
 
 @Controller
 @RequestMapping("/diary")
@@ -35,28 +36,19 @@ public class DiaryController {
     @Autowired
     private MessageSource messageSource;
 	
-	@RequestMapping("/list")
-	public String listDiaries(Model model, HttpSession session){
+	@RequestMapping("/list/{pageNumber}")
+	public String listDiaries(Model model, @PathVariable int pageNumber, HttpSession session){
 
 		UserProfile up = LoginController.getUserProfile(session);
 		Set<Diary> list = (Set<Diary>) up.getDiaries();
 		Diary diary = (Diary) list.iterator().next();
+
+		long totalCount = diarypageService.getTotalCount(diary, DateUtils.getCurrentDate());
+		int lastPageNumber = (int) ((totalCount / IConstants.PAGE_COUNT_DIARY_LIST) + 1);
 		
-		
-		
-//		List<DiaryPage> somePages = new ArrayList<DiaryPage>();
-//		Date current = DateUtils.getCurrentDate();
-//		for (int i=0;i<10;i++){
-//			
-//			DiaryPage diaryPage = diarypageService.getByDate(diary, current);
-//			if (diaryPage==null)
-//				diaryPage = new DiaryPage(current);
-//			
-//			somePages.add(diaryPage);
-//			current = DateUtils.before(current, 1);
-//		}
-		
-		model.addAttribute("somePages", diarypageService.getByDate(diary, DateUtils.getCurrentDate()));
+		model.addAttribute("lastPageNumber", new Integer(lastPageNumber)); 
+		model.addAttribute("activePage", new Integer(pageNumber)); 
+		model.addAttribute("somePages", diarypageService.getByDate(diary, DateUtils.getCurrentDate(), pageNumber, IConstants.PAGE_COUNT_DIARY_LIST));
 		
 		
 		return "diary/listdiaries";

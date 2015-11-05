@@ -8,7 +8,7 @@
 <div style="divContainer">
 <c:forEach  var="diaryPage" items="${sharedList}">
 
-	<div class="divItem">
+	<div class="divItem" onclick="window.location='<c:url value="/shared/view/${diaryPage.recordId}" />'">
 
 		<c:choose>
 			<c:when test="${diaryPage.likeCount>0}">

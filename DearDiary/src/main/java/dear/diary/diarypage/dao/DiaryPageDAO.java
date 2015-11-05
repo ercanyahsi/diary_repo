@@ -7,7 +7,7 @@ import dear.diary.diary.model.Diary;
 import dear.diary.diarypage.model.DiaryPage;
 
 public interface DiaryPageDAO {
-	 public List<DiaryPage> getByDate(Diary diary, Date date);
+	 public List<DiaryPage> getByDate(Diary diary, Date date, int pageNumber, int pageSize);
 	 public void saveDiaryPage(DiaryPage diaryPage);
 	 public void saveOrUpdateDiaryPage(DiaryPage diaryPage);
 	 public int getMaxDiaryPageId(int diaryId);
@@ -17,4 +17,5 @@ public interface DiaryPageDAO {
 	 public List<DiaryPage> getSharedList(int userId, int diaryId);
 	 public DiaryPage viewPage(int userId, int recordId) throws Exception;
 	 public List<DiaryPage> getSharedUserViewedList(int userId, int diaryId);
+	 public long getTotalCount(Diary diary, Date date);
 }

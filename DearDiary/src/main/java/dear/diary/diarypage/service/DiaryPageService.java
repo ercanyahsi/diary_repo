@@ -23,8 +23,8 @@ public class DiaryPageService {
 	}
 
 	@Transactional
-	public List<DiaryPage> getByDate(Diary diary, Date date) {
-		return diaryPageDAO.getByDate(diary, date);
+	public List<DiaryPage> getByDate(Diary diary, Date date, int pageNumber, int pageSize) {
+		return diaryPageDAO.getByDate(diary, date, pageNumber, pageSize);
 	}
 
 	@Transactional
@@ -69,5 +69,10 @@ public class DiaryPageService {
 	@Transactional
 	public List<DiaryPage> getSharedUserViewedList(int userId, int diaryId){
 		return diaryPageDAO.getSharedUserViewedList(userId, diaryId);
+	}
+	
+	@Transactional
+	public long getTotalCount(Diary diary, Date date) {
+		return diaryPageDAO.getTotalCount(diary, date);
 	}
 }
