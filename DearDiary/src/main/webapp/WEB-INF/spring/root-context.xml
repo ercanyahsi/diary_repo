@@ -16,6 +16,9 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
         <property name="basename" value="messages" />
     </bean>     
+	<bean id="validationMessageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basename" value="ValidationMessages" />
+    </bean>     
     <bean id="localeResolver" class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
         <property name="defaultLocale" value="en" />
     </bean>  

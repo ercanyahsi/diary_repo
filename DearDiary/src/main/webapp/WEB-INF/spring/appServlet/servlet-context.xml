@@ -47,6 +47,9 @@
 
 	<tx:annotation-driven transaction-manager="transactionManager" />
 
+	<beans:bean id="myBeansValidator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean" />
+	<mvc:annotation-driven validator="myBeansValidator" />
+	
 	<beans:bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"
 		destroy-method="close">
 		<beans:property name="driverClassName" value="com.mysql.jdbc.Driver" />
@@ -104,4 +107,6 @@
 				class="com.diary.dear.security.interceptors.SecurityInterceptor" />
 		</mvc:interceptor>
 	</mvc:interceptors>
+	
+	
 </beans:beans>

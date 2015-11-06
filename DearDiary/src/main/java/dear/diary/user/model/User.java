@@ -16,6 +16,7 @@ import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Min;import org.hibernate.annotations.LazyCollectionOption;
+import org.hibernate.validator.constraints.Email;
 
 import dear.diary.diary.model.Diary;
 import dear.diary.diarypage.model.DiaryPage;
@@ -29,13 +30,15 @@ public class User {
 	@Column(name="USER_ID")
 	private int id;
 
-	@Min(6)
+	@Min(message="{lbl.kullaniciHatasi}", value=6)
 	@Column(name="USERNAME")
 	private String username;
 
+	@Min(message="{lbl.passwordHatasi}", value=6)
 	@Column(name="PASSWORD")
 	private String password;
 	
+	@Email(message="{lbl.emailHatasi}")
 	@Column(name="EMAIL")
 	private String email;
 	
