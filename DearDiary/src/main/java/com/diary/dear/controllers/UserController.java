@@ -2,22 +2,24 @@ package com.diary.dear.controllers;
 
 
 import javax.servlet.http.HttpSession;
-import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dear.diary.user.dao.UserExistException;
-import dear.diary.user.model.User;
-import dear.diary.user.service.UserService;
+import com.dear.diary.user.dao.UserExistException;
+import com.dear.diary.user.model.User;
+import com.dear.diary.user.service.UserService;
+import com.dear.diary.validators.UserRegistrationValidator;
+
 import ui.tools.LoginController;
 import ui.tools.MessageBinder;
 
@@ -30,6 +32,10 @@ public class UserController {
 	
 	@Autowired
 	MessageSource messageSource;
+	
+	@Autowired
+	UserRegistrationValidator userRegistrationValidator;
+	
 
 	@RequestMapping(method=RequestMethod.GET, params="new")
 	public String newUser(Model model) {
@@ -39,8 +45,8 @@ public class UserController {
 	
 
 	@RequestMapping(method=RequestMethod.POST)
-	public String createUser(@ModelAttribute("user") @Valid  User user, BindingResult result, Model model, HttpSession session) throws Exception {
-		
+	public String createUser(@ModelAttribute("user") User user, BindingResult result, Model model, HttpSession session) throws Exception {
+		userRegistrationValidator.validate(user, result);
 		if (result.hasErrors())
 			return "user/register";
 		else{
@@ -59,5 +65,10 @@ public class UserController {
 	public String showUserProfile(@PathVariable String username, 	Model model) throws Exception {
 		model.addAttribute("user", userService.loadUserByUserName(username));
 		return "user/view";
+	}
+	
+	@InitBinder
+	private void initBinder(WebDataBinder binder){
+		binder.setValidator(userRegistrationValidator);
 	}
 }

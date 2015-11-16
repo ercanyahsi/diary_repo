@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dear.diary.diarypage.service.DiaryPageService;
-import dear.diary.user.model.User;
-import dear.diary.user.service.UserService;
+import com.dear.diary.diarypage.service.DiaryPageService;
+import com.dear.diary.user.model.User;
+import com.dear.diary.user.service.UserService;
+
 import ui.model.UserProfile;
 import ui.tools.MessageBinder;
 import util.common.constants.IConstants;

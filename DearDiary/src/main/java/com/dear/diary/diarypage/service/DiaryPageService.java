@@ -1,4 +1,4 @@
-package dear.diary.diarypage.service;
+package com.dear.diary.diarypage.service;
 
 import java.sql.Date;
 import java.util.List;
@@ -9,10 +9,10 @@ import javax.transaction.Transactional;
 
 import org.hibernate.SessionFactory;
 
-import dear.diary.diary.model.Diary;
-import dear.diary.diarypage.dao.DiaryPageDAO;
-import dear.diary.diarypage.dao.DiaryPageDAOImpl;
-import dear.diary.diarypage.model.DiaryPage;
+import com.dear.diary.diary.model.Diary;
+import com.dear.diary.diarypage.dao.DiaryPageDAO;
+import com.dear.diary.diarypage.dao.DiaryPageDAOImpl;
+import com.dear.diary.diarypage.model.DiaryPage;
 
 public class DiaryPageService {
 
@@ -57,8 +57,8 @@ public class DiaryPageService {
 	}
 	
 	@Transactional
-	public List<DiaryPage> getSharedList(int userId, int diaryId){
-		return diaryPageDAO.getSharedList(userId, diaryId);
+	public List<DiaryPage> getSharedList(int userId, int diaryId, int pageNumber, int pageSize){
+		return diaryPageDAO.getSharedList(userId, diaryId, pageNumber, pageSize);
 	}
 	
 	@Transactional
@@ -75,4 +75,10 @@ public class DiaryPageService {
 	public long getTotalCount(Diary diary, Date date) {
 		return diaryPageDAO.getTotalCount(diary, date);
 	}
+	
+
+	@Transactional
+    public long getSharedListCount(int userId, int diaryId) {
+    	return diaryPageDAO.getSharedListCount(userId, diaryId);
+    }
 }

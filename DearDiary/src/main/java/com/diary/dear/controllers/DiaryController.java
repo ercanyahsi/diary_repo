@@ -17,9 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import dear.diary.diary.model.Diary;
-import dear.diary.diarypage.model.DiaryPage;
-import dear.diary.diarypage.service.DiaryPageService;
+import com.dear.diary.diary.model.Diary;
+import com.dear.diary.diarypage.model.DiaryPage;
+import com.dear.diary.diarypage.service.DiaryPageService;
+
 import ui.model.UserProfile;
 import ui.tools.DateUtils;
 import ui.tools.LoginController;

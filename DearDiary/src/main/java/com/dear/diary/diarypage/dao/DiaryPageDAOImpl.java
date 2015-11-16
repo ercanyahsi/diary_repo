@@ -1,4 +1,4 @@
-package dear.diary.diarypage.dao;
+package com.dear.diary.diarypage.dao;
 
 import java.sql.Date;
 import java.util.List;
@@ -12,9 +12,10 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import dear.diary.diary.model.Diary;
-import dear.diary.diarypage.model.DiaryPage;
-import dear.diary.user.model.User;
+import com.dear.diary.diary.model.Diary;
+import com.dear.diary.diarypage.model.DiaryPage;
+import com.dear.diary.user.model.User;
+
 import util.common.constants.IConstants;
 
 @Repository
@@ -40,9 +41,6 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     	long totalCount = getTotalCount(diary, date);
     	
     	Query query = currentSession().createQuery("SELECT p FROM DiaryPage p where p.diaryId =:diaryId order by p.pageDate desc ");
-        
-    	int lastPageNumber = (int) ((totalCount / pageSize) + 1);
-
     	query.setParameter("diaryId", diary.getDiaryId());
     	
     	query.setFirstResult((pageNumber - 1) * pageSize);
@@ -121,13 +119,25 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     		return null;
     }
     
-    public List<DiaryPage> getSharedList(int userId, int diaryId){
+
+    public long getSharedListCount(int userId, int diaryId) {
+    	Query query = currentSession().createQuery("select count(p.recordId) from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId and p.recordId not in (select k.recordId from User u join u.userviews k where u.id = :userId)  ");
+    	query.setParameter("diaryId", diaryId);
+    	query.setParameter("userId", userId);
+    	Long result = (Long) query.uniqueResult();
+    	return result;    	
+    }
+    
+    public List<DiaryPage> getSharedList(int userId, int diaryId, int pageNumber, int pageSize){
     	
     	Query query = currentSession().createQuery("select p from DiaryPage p where p.shared=1 and p.diaryId <> :diaryId and p.recordId not in (select k.recordId from User u join u.userviews k where u.id = :userId)  ");
     	query.setParameter("diaryId", diaryId);
     	query.setParameter("userId", userId);
     	
-    	// user load edilecek ve user views tablosundakinler normal listeden çýkarilacak sonrasýnda 2 ayrý liste halinde gösterebiliriz
+
+    	query.setFirstResult((pageNumber - 1) * pageSize);
+    	query.setMaxResults(pageSize);
+    	
     	return (List<DiaryPage>) query.list();
     }
     
@@ -138,7 +148,6 @@ public class DiaryPageDAOImpl implements DiaryPageDAO {
     	query.setParameter("diaryId", diaryId);
     	query.setParameter("userId", userId);
     	
-    	// user load edilecek ve user views tablosundakinler normal listeden çýkarilacak sonrasýnda 2 ayrý liste halinde gösterebiliriz
     	return (List<DiaryPage>) query.list();
     }
     

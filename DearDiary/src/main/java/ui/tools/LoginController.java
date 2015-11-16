@@ -4,9 +4,10 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
 
+import com.dear.diary.user.model.User;
+
 import ui.model.UserProfile;
 import util.common.constants.IConstants;
-import dear.diary.user.model.User;
 
 public class LoginController {
 

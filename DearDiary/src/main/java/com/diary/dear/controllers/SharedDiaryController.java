@@ -8,11 +8,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import dear.diary.diarypage.service.DiaryPageService;
-import dear.diary.user.model.User;
-import dear.diary.user.service.UserService;
+import com.dear.diary.diarypage.service.DiaryPageService;
+import com.dear.diary.user.model.User;
+import com.dear.diary.user.service.UserService;
+
 import ui.model.UserProfile;
+import ui.tools.DateUtils;
 import ui.tools.LoginController;
+import util.common.constants.IConstants;
 
 @Controller
 @RequestMapping("/shared")
@@ -24,21 +27,19 @@ public class SharedDiaryController {
 	@Autowired
 	UserService userService;
 	
-	@RequestMapping("/listshared")
-	public String sharedList(Model model, HttpSession session) {
+	@RequestMapping("/listshared/{pageNumber}")
+	public String sharedList(Model model, @PathVariable int pageNumber, HttpSession session) {
 
 		UserProfile up = LoginController.getUserProfile(session);
-		model.addAttribute("sharedList", diarypageService.getSharedList(up.getId(), up.getDiaries().iterator().next().getDiaryId()));
+
+		long totalCount = diarypageService.getSharedListCount(up.getId(), up.getDiaries().iterator().next().getDiaryId());
+		int lastPageNumber = (int) ((totalCount / IConstants.PAGE_COUNT_DIARY_LIST) + 1);
+
+		model.addAttribute("lastPageNumberSharedList", new Integer(lastPageNumber)); 
+		model.addAttribute("activePageSharedList", new Integer(pageNumber)); 
+		model.addAttribute("sharedList", diarypageService.getSharedList(up.getId(), up.getDiaries().iterator().next().getDiaryId(), pageNumber, IConstants.PAGE_COUNT_DIARY_LIST ));
 		model.addAttribute("userViewedList", diarypageService.getSharedUserViewedList(up.getId(), up.getDiaries().iterator().next().getDiaryId()));
 		return "shared/listshared";
-	}
-
-	@RequestMapping("/userviewed")
-	public String userViewedList(Model model, HttpSession session) {
-
-		UserProfile up = LoginController.getUserProfile(session);
-		model.addAttribute("userViewedList", diarypageService.getSharedUserViewedList(up.getId(), up.getDiaries().iterator().next().getDiaryId()));
-		return "shared/userviewed";
 	}
 
 	@RequestMapping("/like/{recordId}")

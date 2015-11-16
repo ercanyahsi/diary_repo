@@ -1,4 +1,4 @@
-package dear.diary.user.model;
+package com.dear.diary.user.model;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -18,8 +18,8 @@ import javax.persistence.Table;
 import javax.validation.constraints.Min;import org.hibernate.annotations.LazyCollectionOption;
 import org.hibernate.validator.constraints.Email;
 
-import dear.diary.diary.model.Diary;
-import dear.diary.diarypage.model.DiaryPage;
+import com.dear.diary.diary.model.Diary;
+import com.dear.diary.diarypage.model.DiaryPage;
 
 
 @Entity
@@ -30,7 +30,6 @@ public class User {
 	@Column(name="USER_ID")
 	private int id;
 
-	@Min(message="{lbl.kullaniciHatasi}", value=6)
 	@Column(name="USERNAME")
 	private String username;
 

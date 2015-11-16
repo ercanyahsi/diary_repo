@@ -18,7 +18,7 @@
 	</c:choose>
 </c:forEach>
 </div>
-<div style="divContainer">
+<div class="divContainer">
 
 	<c:forEach  var="diaryPage" items="${somePages}">
 

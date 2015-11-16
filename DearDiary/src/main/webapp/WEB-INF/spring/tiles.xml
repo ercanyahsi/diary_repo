@@ -39,7 +39,4 @@
 	<definition name="shared/view" extends="template">
 		<put-attribute name="content" value="/WEB-INF/views/shared/view.jsp" />
 	</definition>
-	<definition name="shared/userviewed" extends="template">
-		<put-attribute name="content" value="/WEB-INF/views/shared/userviewed.jsp" />
-	</definition>
 </tiles-definitions>

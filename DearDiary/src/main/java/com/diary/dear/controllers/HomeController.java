@@ -13,9 +13,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import dear.diary.user.dao.UserDAO;
-import dear.diary.user.model.User;
-import dear.diary.user.service.UserService;
+import com.dear.diary.user.dao.UserDAO;
+import com.dear.diary.user.model.User;
+import com.dear.diary.user.service.UserService;
 
 /**
  * Handles requests for the application home page.

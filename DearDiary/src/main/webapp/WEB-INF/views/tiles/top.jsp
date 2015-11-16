@@ -29,10 +29,7 @@
 	   		<a href='<spring:url value="/diary/list/1"/>'><spring:message code="lbl.yazdiklarim"  /></a>
 	   	</li>
 	   	<li>
-	   		<a href='<spring:url value="/shared/listshared"/>'><spring:message code="lbl.paylasilanlar"  /></a>
-	   	</li>
-	   	<li>
-	   		<a href='<spring:url value="/shared/userviewed"/>'><spring:message code="lbl.dahaoncegoruntuledikleriniz"  /></a>
+	   		<a href='<spring:url value="/shared/listshared/1"/>'><spring:message code="lbl.paylasilanlar"  /></a>
 	   	</li>
 	   	<li>
 		<a href='<spring:url value="/user/${userProfile.username}"/>'>${userProfile.username}</a>
